@@ -1,8 +1,17 @@
 /**
- * Web Audio API synthesizer for Raja Giannuca - "Masa Ini, Nanti, dan Masa Indah Lainnya"
- * Plays a warm, nostalgic acoustic piano ballad melody inspired by the song.
- * Also supports loading a local audio file if user chooses to upload the original track.
+ * Web Audio & MP3 Player for:
+ * Raja Giannuca - "Masa Ini, Nanti, dan Masa Indah Lainnya"
+ * 
+ * Fitur:
+ * 1. Otomatis memuat file /audio/song.mp3 jika tersedia di folder /public/audio/song.mp3
+ * 2. Menyimpan file MP3 yang Anda unggah ke penyimpanan browser (IndexedDB)
+ *    sehingga saat halaman dibuka kembali, lagu pilihan Anda LANGSUNG AKTIF otomatis!
+ * 3. Melodi sintetis akustik sebagai fallback bawaan yang nyaman dan syahdu.
  */
+
+const DB_NAME = 'BirthdayMusicDB';
+const STORE_NAME = 'musicStore';
+const MUSIC_KEY = 'userSong';
 
 class SoundPlayer {
   private ctx: AudioContext | null = null;
@@ -12,64 +21,159 @@ class SoundPlayer {
   private timer: number | null = null;
   private listeners: Set<() => void> = new Set();
   
-  // Custom audio element support if user uploads or provides audio
   private audioElement: HTMLAudioElement | null = null;
-  private isCustomAudio = false;
-
-  // Title and track info
-  public trackTitle = 'Masa Ini, Nanti, dan Masa Indah Lainnya';
+  public isCustomAudio = false;
+  public currentTrackName = 'Masa Ini, Nanti, dan Masa Indah Lainnya';
   public artist = 'Raja Giannuca';
+  public isLoadedFromStorage = false;
 
-  // Melody & chord progression in C/Am evoking the warm, gentle Indonesian ballad:
-  // C - G/B - Am7 - Em - F - C/E - Dm7 - Gsus4 - G - C
+  // Melodi sintetis akustik Raja Giannuca
   private sequence = [
-    // Phrase 1: "Masa ini..." (Cmaj7)
     { notes: [48, 60, 64, 67, 72], duration: 0.7 },
     { notes: [71], duration: 0.35 },
     { notes: [67], duration: 0.35 },
     { notes: [64], duration: 0.4 },
-
-    // Phrase 2: (G/B)
     { notes: [47, 59, 62, 67], duration: 0.7 },
     { notes: [69], duration: 0.35 },
     { notes: [67], duration: 0.35 },
     { notes: [62], duration: 0.4 },
-
-    // Phrase 3: "...nanti dan masa indah lainnya" (Am7)
     { notes: [45, 57, 60, 64, 69], duration: 0.7 },
     { notes: [71], duration: 0.35 },
     { notes: [72], duration: 0.35 },
     { notes: [74], duration: 0.4 },
-
-    // Phrase 4: (Em7 / G)
     { notes: [52, 55, 59, 64], duration: 0.6 },
     { notes: [67], duration: 0.35 },
     { notes: [64], duration: 0.35 },
     { notes: [59], duration: 0.4 },
-
-    // Phrase 5: (Fmaj7 - gentle resolution)
     { notes: [41, 53, 57, 60, 65], duration: 0.7 },
     { notes: [64], duration: 0.35 },
     { notes: [60], duration: 0.35 },
     { notes: [57], duration: 0.4 },
-
-    // Phrase 6: (C/E)
     { notes: [40, 52, 55, 60, 64], duration: 0.6 },
     { notes: [67], duration: 0.35 },
     { notes: [64], duration: 0.35 },
     { notes: [60], duration: 0.4 },
-
-    // Phrase 7: (Dm7 -> Gsus4)
     { notes: [38, 50, 53, 57, 62], duration: 0.6 },
     { notes: [65], duration: 0.3 },
     { notes: [43, 55, 58, 62, 67], duration: 0.6 },
     { notes: [71], duration: 0.4 },
-
-    // Phrase 8: (C resolve)
     { notes: [48, 55, 60, 64, 72], duration: 0.9 },
     { notes: [76], duration: 0.4 },
     { notes: [72], duration: 0.5 },
   ];
+
+  constructor() {
+    // Inisialisasi pengecekan lagu tersimpan saat web dimuat
+    if (typeof window !== 'undefined') {
+      this.initStoredAudio();
+    }
+  }
+
+  private async initStoredAudio() {
+    try {
+      // 1. Cek apakah ada file MP3 tersimpan di IndexedDB browser
+      const savedBlob = await this.getAudioFromDB();
+      if (savedBlob) {
+        this.setupAudioElement(savedBlob, 'Lagu Pilihan Tersimpan');
+        this.isLoadedFromStorage = true;
+        this.notify();
+        return;
+      }
+
+      // 2. Cek apakah ada file statis di /audio/song.mp3
+      const response = await fetch('/audio/song.mp3', { method: 'HEAD' });
+      if (response.ok && response.headers.get('content-type')?.includes('audio')) {
+        const audio = new Audio('/audio/song.mp3');
+        audio.loop = true;
+        audio.volume = this.volume;
+        this.audioElement = audio;
+        this.isCustomAudio = true;
+        this.notify();
+      }
+    } catch {
+      // Gunakan sintetis jika tidak ada file statis
+    }
+  }
+
+  // --- IndexedDB Storage Helper ---
+  private openDB(): Promise<IDBDatabase> {
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open(DB_NAME, 1);
+      req.onupgradeneeded = () => {
+        req.result.createObjectStore(STORE_NAME);
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+
+  private async saveAudioToDB(blob: Blob, name: string) {
+    try {
+      const db = await this.openDB();
+      const tx = db.transaction(STORE_NAME, 'readwrite');
+      tx.objectStore(STORE_NAME).put({ blob, name }, MUSIC_KEY);
+    } catch {
+      // Ignore storage errors
+    }
+  }
+
+  private async getAudioFromDB(): Promise<{ blob: Blob; name: string } | null> {
+    try {
+      const db = await this.openDB();
+      return new Promise((resolve) => {
+        const tx = db.transaction(STORE_NAME, 'readonly');
+        const req = tx.objectStore(STORE_NAME).get(MUSIC_KEY);
+        req.onsuccess = () => resolve(req.result || null);
+        req.onerror = () => resolve(null);
+      });
+    } catch {
+      return null;
+    }
+  }
+
+  public async clearStoredAudio() {
+    try {
+      const db = await this.openDB();
+      const tx = db.transaction(STORE_NAME, 'readwrite');
+      tx.objectStore(STORE_NAME).delete(MUSIC_KEY);
+    } catch {
+      // Ignore
+    }
+    if (this.audioElement) {
+      this.audioElement.pause();
+      this.audioElement = null;
+    }
+    this.isCustomAudio = false;
+    this.isLoadedFromStorage = false;
+    this.currentTrackName = 'Masa Ini, Nanti, dan Masa Indah Lainnya';
+    this.notify();
+  }
+
+  private setupAudioElement(data: { blob: Blob; name: string } | File, trackName?: string) {
+    if (this.audioElement) {
+      this.audioElement.pause();
+      this.audioElement = null;
+    }
+    const blob = data instanceof File ? data : data.blob;
+    const name = data instanceof File ? data.name : (trackName || data.name);
+    const url = URL.createObjectURL(blob);
+    this.audioElement = new Audio(url);
+    this.audioElement.loop = true;
+    this.audioElement.volume = this.volume;
+    this.isCustomAudio = true;
+    this.currentTrackName = name.replace(/\.[^/.]+$/, '');
+    this.notify();
+  }
+
+  public async loadCustomAudio(file: File) {
+    // 1. Pasang langsung ke audio player
+    this.setupAudioElement(file, file.name);
+
+    // 2. Simpan secara permanen di IndexedDB browser
+    await this.saveAudioToDB(file, file.name);
+    this.isLoadedFromStorage = true;
+    this.notify();
+  }
 
   private initContext() {
     if (!this.ctx) {
@@ -94,27 +198,6 @@ class SoundPlayer {
     this.listeners.forEach((cb) => cb());
   }
 
-  public loadCustomAudio(file: File) {
-    if (this.audioElement) {
-      this.audioElement.pause();
-      this.audioElement = null;
-    }
-    const url = URL.createObjectURL(file);
-    this.audioElement = new Audio(url);
-    this.audioElement.loop = true;
-    this.audioElement.volume = this.volume;
-    this.isCustomAudio = true;
-    this.audioElement.onended = () => {
-      if (this.isPlaying && this.audioElement) {
-        this.audioElement.play();
-      }
-    };
-    if (this.isPlaying) {
-      this.audioElement.play();
-    }
-    this.notify();
-  }
-
   public play() {
     this.initContext();
     if (this.isPlaying) return;
@@ -122,7 +205,10 @@ class SoundPlayer {
     this.notify();
 
     if (this.isCustomAudio && this.audioElement) {
-      this.audioElement.play().catch(() => {});
+      this.audioElement.play().catch(() => {
+        // Fallback ke sintetis jika autoplay tertahan
+        this.step();
+      });
     } else {
       this.step();
     }

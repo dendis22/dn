@@ -1,17 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Pause, Volume2, VolumeX, Upload, ChevronDown, Heart } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Upload, ChevronDown, Heart, RotateCcw, CheckCircle2 } from 'lucide-react';
 import { soundPlayer } from '../audio/soundPlayer';
 
 export const SurfaceHero: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(soundPlayer.getIsPlaying());
   const [volume, setVolume] = useState(soundPlayer.getVolume());
   const [progress, setProgress] = useState(30);
+  const [trackName, setTrackName] = useState(soundPlayer.currentTrackName);
+  const [isCustom, setIsCustom] = useState(soundPlayer.isCustomAudio);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const unsub = soundPlayer.subscribe(() => {
       setIsPlaying(soundPlayer.getIsPlaying());
       setVolume(soundPlayer.getVolume());
+      setTrackName(soundPlayer.currentTrackName);
+      setIsCustom(soundPlayer.isCustomAudio);
     });
     return unsub;
   }, []);
@@ -34,12 +39,19 @@ export const SurfaceHero: React.FC = () => {
     soundPlayer.setVolume(val);
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      soundPlayer.loadCustomAudio(file);
+      await soundPlayer.loadCustomAudio(file);
       soundPlayer.play();
+      setUploadSuccess(true);
+      setTimeout(() => setUploadSuccess(false), 4000);
     }
+  };
+
+  const handleResetToDefault = async () => {
+    await soundPlayer.clearStoredAudio();
+    soundPlayer.play();
   };
 
   return (
@@ -54,7 +66,7 @@ export const SurfaceHero: React.FC = () => {
           <span>Persembahan Spesial Ulang Tahun</span>
         </div>
 
-        {/* Title updated to Happy Birthday My Older Sister */}
+        {/* Title: Happy Birthday My Older Sister */}
         <h1 className="text-3xl sm:text-5xl lg:text-5xl font-serif font-bold text-stone-900 leading-tight tracking-tight mb-6">
           Happy Birthday My Older Sister
         </h1>
@@ -74,10 +86,10 @@ export const SurfaceHero: React.FC = () => {
           </div>
         </div>
 
-        {/* Clean & Simple Music Player for Raja Giannuca */}
+        {/* Clean & Simple Music Player */}
         <div className="w-full max-w-xl mx-auto bg-white border border-rose-200/90 rounded-2xl p-4 sm:p-5 shadow-xs text-left mb-8">
           <div className="flex items-center justify-between gap-3 mb-3">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 min-w-0">
               <button
                 type="button"
                 onClick={togglePlay}
@@ -91,18 +103,19 @@ export const SurfaceHero: React.FC = () => {
                 )}
               </button>
 
-              <div>
-                <h2 className="text-sm font-semibold text-stone-900 leading-tight">
-                  Masa Ini, Nanti, dan Masa Indah Lainnya
+              <div className="min-w-0">
+                <h2 className="text-sm font-semibold text-stone-900 leading-tight truncate">
+                  {trackName}
                 </h2>
-                <p className="text-xs text-rose-600 font-medium mt-0.5">
-                  Raja Giannuca · {isPlaying ? 'Sedang Diputar' : 'Klik untuk Memutar'}
+                <p className="text-xs text-rose-600 font-medium mt-0.5 truncate">
+                  {isCustom ? 'Audio MP3 Pilihan Anda' : 'Raja Giannuca'} ·{' '}
+                  {isPlaying ? 'Sedang Diputar' : 'Klik untuk Memutar'}
                 </p>
               </div>
             </div>
 
-            {/* Animated Bars */}
-            <div className="flex items-end gap-1 h-5 px-1">
+            {/* Animated Audio Bars */}
+            <div className="flex items-end gap-1 h-5 px-1 shrink-0">
               <div
                 className={`w-1 bg-rose-400 rounded-full ${
                   isPlaying ? 'h-5 animate-pulse' : 'h-1.5'
@@ -129,12 +142,13 @@ export const SurfaceHero: React.FC = () => {
             />
           </div>
 
-          <div className="flex items-center justify-between text-[11px] text-stone-500">
+          {/* Controls Footer */}
+          <div className="flex items-center justify-between text-[11px] text-stone-500 flex-wrap gap-2 pt-1">
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => soundPlayer.setVolume(volume > 0 ? 0 : 0.6)}
-                className="text-stone-400 hover:text-stone-700"
+                className="text-stone-400 hover:text-stone-700 cursor-pointer"
               >
                 {volume === 0 ? (
                   <VolumeX className="w-3.5 h-3.5" />
@@ -154,15 +168,27 @@ export const SurfaceHero: React.FC = () => {
               />
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
+              {isCustom && (
+                <button
+                  type="button"
+                  onClick={handleResetToDefault}
+                  title="Kembali ke melodi bawaan"
+                  className="text-stone-500 hover:text-stone-700 flex items-center gap-1 cursor-pointer"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  <span>Reset Bawaan</span>
+                </button>
+              )}
+
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                title="Unggah file MP3 lagu jika ada"
-                className="text-rose-600 hover:text-rose-700 font-medium flex items-center gap-1 cursor-pointer"
+                title="Pilih file lagu MP3 dari perangkat Anda"
+                className="text-rose-600 hover:text-rose-700 font-medium flex items-center gap-1 cursor-pointer bg-rose-50 hover:bg-rose-100 px-2.5 py-1 rounded-lg border border-rose-200 transition-colors"
               >
                 <Upload className="w-3 h-3" />
-                <span>Ganti File Musik</span>
+                <span>Pilih File Lagu (MP3)</span>
               </button>
               <input
                 type="file"
@@ -173,6 +199,16 @@ export const SurfaceHero: React.FC = () => {
               />
             </div>
           </div>
+
+          {/* Notification when custom audio is successfully saved */}
+          {uploadSuccess && (
+            <div className="mt-3 p-2 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center gap-1.5 animate-fade-in">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              <span>
+                Lagu berhasil disimpan! Lagu ini akan otomatis diputar setiap kali halaman dibuka.
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Scroll down indicator */}
