@@ -7,13 +7,13 @@ const chaptersData: Chapter[] = [
     id: 1,
     numberString: 'Bab 01',
     title: 'Cahaya Penuntun di Langkah Pertamaku',
-    subtitle: 'Saat tanganmu menggenggam jemariku agar aku tak takut melangkah',
+    subtitle: 'Di setiap langkah hidupku, ada jejak kebaikan Kakak yang menjadi petunjuk jalan.',
     quote: 'Sebelum aku mengenal arti keberanian, aku sudah melihatnya di matamu saat kau menjagaku.',
     content: [
-      'Sejak ingatan paling awal dalam hidupku, kehadiranmu selalu menjadi tempat perlindungan yang paling aman. Di saat aku masih belajar mengenal dunia, kau selalu ada mendahului rasa takutku.',
-      'Kau mengikat tali sepatuku saat jemari kecilku belum sanggup, menyemangatiku di hari pertama sekolah, dan memelukku hangat saat gemuruh petir membuatku menangis. Kau menjadi sosok ibu bagiku jauh sebelum kau harus melakukannya, memberi rasa aman yang membuat duniaku terasa begitu ramah.'
+      'Di setiap fase pertumbuhanku, ada bayang-bayang kebaikan Kakak yang selalu mendekap. Kakak adalah cahaya panutan yang kehangatannya tidak pernah pudar oleh waktu. Dari Kakak, aku belajar bahwa menjadi kuat bukan berarti tidak bisa menangis, dan menjadi hebat dimulai dari kerendahan hati.',
+      'Setiap nasihatmu adalah bekal, dan setiap tindakanmu adalah cerminan bagi hidupku. Di momen ini, aku hanya ingin menyampaikan rasa terima kasih yang tak terhingga. Semoga cahaya kebaikan yang selalu Kakak pancarkan kepada orang lain, berbalik menerangi hidup Kakak dengan keberkahan, kesehatan, dan kebahagiaan yang berlipat ganda.'
     ],
-    reflection: 'Kau memberiku keberanian untuk melangkah bebas di dunia ini, karena aku tahu kau akan selalu ada menjagaku.'
+    reflection: 'Bagi dunia, Kakak mungkin hanya satu orang. Namun bagiku, Kakak adalah cahaya panutan yang selalu menerangi jalan setapakku.'
   },
   {
     id: 2,
@@ -32,24 +32,24 @@ const chaptersData: Chapter[] = [
     numberString: 'Bab 03',
     title: 'Pelajaran Hidup yang Membentuk Diriku',
     subtitle: 'Nasihat hangat yang menjadi pedoman langkahku hingga kini',
-    quote: 'Nasihatmu bukanlah tuntutan, melainkan lentera lembut yang menuntunku menemukan jati diri.',
+    quote: 'nasihat mu yang tegas terkadang membakar namun kasih sayangmu yang tulus selalu berhasil mendinginkan suasana',
     content: [
-      'Setiap kali aku merasa bimbang, gagal, atau terluka, kamarmu selalu menjadi tempat ternyaman untuk berteduh. Ditemani secangkir teh hangat dan obrolan tanpa tergesa-gesa, kau selalu mendengarkan tanpa menghakimi.',
-      'Kau mengajarkanku bahwa kebaikan hati bukanlah kelemahan, kejujuran adalah mahkota, dan menghargai orang lain dimulai dari menghormati diri sendiri. Segala hal baik dalam caraku memperlakukan sesama hari ini adalah buah dari teladan yang kau contohkan.'
+      'aku tahu dibalik emosimu yang mudah tersulut, ada hati yang paling cepat merasa iba dan paling pertama mengulurkan tangan saat aku kesulitan. kakak mengajarkanku bahwa manusia tidak harus sempurna untuk menjadi orang baik.',
+      'pelajaran hidup darimu membuatku paham, bahwa kemarahanmu hanyalah selimut luar dari rasa khawatir yang teramat besar . Terima kasih telah menjadi pelindung yang tangguh sekaligus kakak yang luar biasa baik hati.'
     ],
-    reflection: 'Bagiku, kau adalah tolok ukur kesabaran, kebijaksanaan, dan keanggunan budi pekerti.'
+    reflection: 'Bagiku, engkau adalah standar utama dalam hal ketabahan'
   },
   {
     id: 4,
     numberString: 'Bab 04',
     title: 'Tawa, Obrolan Malam & Ikatan yang Abadi',
     subtitle: 'Sukacita yang menjadikan kebersamaan kita anugerah terindah',
-    quote: 'Dalam tawa renyah dan canda kita, aku menemukan sahabat sejati seumur hidup.',
+    quote: 'Dalam tawa renyah canda kita, aku menemukan tempat bersandar yang tulus seumur hidup',
     content: [
       'Selain menjadi pelindung dan panutan, kau adalah teman terbaik tempatku berbagi cerita apa adanya. Perjalanan mendadak kita, obrolan larut malam, serta tawa geli atas hal-hal konyol yang hanya kita berdua yang mengerti.',
       'Waktu dan jarak tak akan pernah mampu memudarkan ikatan ini. Di setiap musim kehidupan, mengetahui bahwa kau selalu ada di sisiku membuatku merasa tak terkalahkan.'
     ],
-    reflection: 'Berapa pun usiaku kelak, kau akan selalu menjadi pahlawanku, kakakku, dan ibu keduaku.'
+    reflection: 'Berapa pun usiaku kelak, kau akan selalu menjadi pahlawanku dan kakakku.'
   }
 ];
 
@@ -62,36 +62,36 @@ export const MemoriesSection: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-rose-500 mb-2">
-            <BookOpen className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-rose-600 mb-2 bg-rose-100/70 px-3 py-1 rounded-full border border-rose-200">
+            <BookOpen className="w-3.5 h-3.5 stroke-[2.2]" />
             <span>Babak Perjalanan Kita</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight mb-2">
+          <h2 className="text-2xl sm:text-4xl font-serif font-extrabold text-stone-950 tracking-tight mb-2">
             Kenangan Kita (Our Memories)
           </h2>
-          <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+          <p className="text-stone-800 font-semibold text-xs sm:text-sm leading-relaxed">
             Kumpulan momen berharga, pengorbanan tulus, dan pelajaran hidup yang membangun
             pondasi cinta tak tergoyahkan.
           </p>
         </div>
 
         {/* 4 Chapter Clean Selector */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-6">
           {chaptersData.map((chap, idx) => (
             <button
               key={chap.id}
               type="button"
               onClick={() => setActiveIdx(idx)}
-              className={`p-3 rounded-xl text-left border transition-colors cursor-pointer ${
+              className={`p-3.5 rounded-xl text-left border-2 transition-colors cursor-pointer ${
                 activeIdx === idx
-                  ? 'bg-white border-rose-300 shadow-xs ring-1 ring-rose-200'
-                  : 'bg-white/60 hover:bg-white border-rose-100 text-stone-600'
+                  ? 'bg-white border-rose-400 shadow-xs ring-1 ring-rose-300'
+                  : 'bg-white/80 hover:bg-white border-rose-100 text-stone-800'
               }`}
             >
-              <span className="text-[11px] font-mono font-medium text-rose-600 block">
+              <span className="text-xs font-mono font-bold text-rose-600 block">
                 {chap.numberString}
               </span>
-              <span className="text-xs font-semibold text-stone-800 line-clamp-1 mt-0.5 block">
+              <span className="text-xs sm:text-sm font-bold text-stone-950 line-clamp-1 mt-0.5 block">
                 {chap.title}
               </span>
             </button>
@@ -99,41 +99,41 @@ export const MemoriesSection: React.FC = () => {
         </div>
 
         {/* Active Chapter Content Card */}
-        <div className="bg-white border border-rose-100 rounded-2xl p-6 sm:p-8 shadow-xs">
-          <div className="border-b border-rose-100 pb-5 mb-5">
-            <span className="text-xs font-mono text-rose-500 font-medium">
+        <div className="bg-white border-2 border-rose-200/90 rounded-2xl p-6 sm:p-9 shadow-xs">
+          <div className="border-b border-rose-200 pb-5 mb-5">
+            <span className="text-xs font-mono text-rose-600 font-bold uppercase tracking-wider">
               {activeChapter.numberString}
             </span>
-            <h3 className="text-xl sm:text-2xl font-serif font-bold text-stone-900 mt-1 mb-1">
+            <h3 className="text-xl sm:text-3xl font-serif font-extrabold text-stone-950 mt-1 mb-1.5">
               {activeChapter.title}
             </h3>
-            <p className="text-xs sm:text-sm text-stone-500 italic">
+            <p className="text-sm font-semibold text-stone-600 italic">
               {activeChapter.subtitle}
             </p>
           </div>
 
           {/* Quote */}
-          <div className="bg-rose-50/70 border-l-3 border-rose-400 p-4 rounded-r-xl mb-6">
-            <p className="font-serif italic text-stone-700 text-sm sm:text-base leading-relaxed">
+          <div className="bg-rose-50/90 border-l-4 border-rose-500 p-4 sm:p-5 rounded-r-xl mb-6">
+            <p className="font-serif italic font-bold text-stone-950 text-base sm:text-lg leading-relaxed">
               &ldquo;{activeChapter.quote}&rdquo;
             </p>
           </div>
 
           {/* Paragraphs */}
-          <div className="space-y-4 text-stone-700 text-sm sm:text-base leading-relaxed mb-6 font-sans">
+          <div className="space-y-4 text-stone-800 font-medium text-base sm:text-lg leading-relaxed mb-6 font-sans">
             {activeChapter.content.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
 
           {/* Reflection */}
-          <div className="bg-stone-50 border border-stone-100 p-4 rounded-xl flex items-start gap-3">
-            <Heart className="w-4 h-4 text-rose-500 fill-rose-500 shrink-0 mt-0.5" />
+          <div className="bg-rose-50/50 border border-rose-200 p-4 sm:p-5 rounded-xl flex items-start gap-3">
+            <Heart className="w-4 h-4 text-rose-600 fill-rose-600 shrink-0 mt-1 stroke-[2.2]" />
             <div>
-              <span className="text-[11px] uppercase tracking-wider font-semibold text-rose-700 block mb-0.5">
+              <span className="text-xs uppercase tracking-wider font-extrabold text-rose-700 block mb-0.5">
                 Catatan Hati
               </span>
-              <p className="text-xs sm:text-sm text-stone-700 font-serif italic leading-relaxed">
+              <p className="text-sm sm:text-base text-stone-900 font-serif italic font-semibold leading-relaxed">
                 {activeChapter.reflection}
               </p>
             </div>
@@ -145,17 +145,17 @@ export const MemoriesSection: React.FC = () => {
               type="button"
               disabled={activeIdx === 0}
               onClick={() => setActiveIdx((prev) => Math.max(0, prev - 1))}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors flex items-center gap-1 cursor-pointer ${
+              className={`px-4 py-2 text-xs font-bold rounded-lg border transition-colors flex items-center gap-1 cursor-pointer ${
                 activeIdx === 0
                   ? 'opacity-40 cursor-not-allowed border-stone-200 text-stone-400'
-                  : 'bg-white hover:bg-rose-50 text-stone-700 border-rose-200'
+                  : 'bg-white hover:bg-rose-50 text-stone-900 border-rose-300'
               }`}
             >
-              <ChevronLeft className="w-3.5 h-3.5" />
+              <ChevronLeft className="w-3.5 h-3.5 stroke-[2.2]" />
               <span>Bab Sebelumnya</span>
             </button>
 
-            <span className="text-xs text-stone-600 font-mono">
+            <span className="text-xs text-stone-900 font-bold font-mono">
               {activeIdx + 1} / {chaptersData.length}
             </span>
 
@@ -163,14 +163,14 @@ export const MemoriesSection: React.FC = () => {
               type="button"
               disabled={activeIdx === chaptersData.length - 1}
               onClick={() => setActiveIdx((prev) => Math.min(chaptersData.length - 1, prev + 1))}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors flex items-center gap-1 cursor-pointer ${
+              className={`px-4 py-2 text-xs font-bold rounded-lg border transition-colors flex items-center gap-1 cursor-pointer ${
                 activeIdx === chaptersData.length - 1
                   ? 'opacity-40 cursor-not-allowed border-stone-200 text-stone-400'
-                  : 'bg-rose-500 hover:bg-rose-600 text-white border-rose-500 shadow-xs'
+                  : 'bg-rose-600 hover:bg-rose-700 text-white border-rose-600 shadow-xs'
               }`}
             >
               <span>Bab Berikutnya</span>
-              <ChevronRight className="w-3.5 h-3.5" />
+              <ChevronRight className="w-3.5 h-3.5 stroke-[2.2]" />
             </button>
           </div>
         </div>

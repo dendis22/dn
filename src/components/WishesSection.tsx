@@ -59,20 +59,20 @@ export const WishesSection: React.FC = () => {
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-rose-500 mb-2">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-rose-600 mb-2 bg-rose-100/70 px-3 py-1 rounded-full border border-rose-200">
+            <Sparkles className="w-3.5 h-3.5 stroke-[2.2]" />
             <span>Doa Terbaik untuk Usia Baru</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight mb-2">
+          <h2 className="text-2xl sm:text-4xl font-serif font-extrabold text-stone-950 tracking-tight mb-2">
             Enam Harapan & Doa Tulus (Wishes)
           </h2>
-          <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+          <p className="text-stone-800 font-semibold text-xs sm:text-sm leading-relaxed">
             Untaian doa terbaik untuk sosok tercinta. Klik salah satu kartu doa untuk menyampaikan
             amin dan harapan terbaikmu.
           </p>
         </div>
 
-        {/* 6 Wishes Clean Grid */}
+        {/* 6 Wishes Clean Grid with Bold Typography */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {wishesData.map((wish) => {
             const isDone = !!blessed[wish.id];
@@ -80,37 +80,37 @@ export const WishesSection: React.FC = () => {
               <div
                 key={wish.id}
                 onClick={() => toggleBlessing(wish.id)}
-                className={`p-5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
+                className={`p-5 sm:p-6 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between ${
                   isDone
-                    ? 'bg-rose-50/80 border-rose-300 shadow-xs'
-                    : 'bg-white hover:bg-rose-50/30 border-rose-100 shadow-2xs'
+                    ? 'bg-rose-50/90 border-rose-400 shadow-xs'
+                    : 'bg-white hover:bg-rose-50/40 border-rose-200 shadow-2xs'
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-mono font-medium text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">
+                    <span className="text-xs font-mono font-bold text-rose-700 bg-rose-100/80 px-2.5 py-0.5 rounded-full border border-rose-300">
                       Doa 0{wish.id}
                     </span>
-                    <div className="flex items-center gap-1 text-[11px] text-stone-500">
+                    <div className="flex items-center gap-1 text-xs font-bold text-stone-700">
                       <Heart
-                        className={`w-3.5 h-3.5 ${
-                          isDone ? 'fill-rose-500 text-rose-500' : 'text-stone-300'
+                        className={`w-4 h-4 stroke-[2.2] ${
+                          isDone ? 'fill-rose-600 text-rose-600' : 'text-stone-400'
                         }`}
                       />
                       <span>{isDone ? 'Diaminkan' : 'Klik untuk Amin'}</span>
                     </div>
                   </div>
 
-                  <h3 className="font-serif font-bold text-stone-800 text-base mb-1.5">
+                  <h3 className="font-serif font-extrabold text-stone-950 text-lg mb-2">
                     {wish.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-4 font-sans">
+                  <p className="text-xs sm:text-sm text-stone-800 font-medium leading-relaxed mb-4 font-sans">
                     {wish.message}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-rose-100/60">
-                  <p className="text-xs text-rose-600 italic font-serif leading-relaxed">
+                <div className="pt-3 border-t border-rose-200">
+                  <p className="text-xs sm:text-sm text-rose-700 italic font-serif font-bold leading-relaxed">
                     &ldquo;{wish.blessing}&rdquo;
                   </p>
                 </div>

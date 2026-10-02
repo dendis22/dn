@@ -4,13 +4,13 @@ import { Mail, Heart, Copy, Check } from 'lucide-react';
 export const LetterSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
 
-  const letterContent = `Untuk Kakakku Tersayang, Ibu Keduaku, dan Panutan Hidupku,
+  const letterContent = `Untuk Kakakku Tersayang dan Panutan Hidupku,
 
-Saat menulis surat ini, rasanya kata-kata tak pernah cukup untuk menampung rasa terima kasih dan syukur yang memenuhi hatiku setiap kali mengingatmu. Sejak aku masih kecil dan belum memahami dunia, kau sudah berdiri kokoh—bukan sekadar sebagai seorang kakak, tetapi sebagai pelindung, guru, dan sosok ibu kedua yang merawat jiwaku dengan kesabaran tiada tara.
+Saat mengetik surat ini, rasanya kata-kata tak pernah cukup untuk menampung rasa terima kasih dan syukur yang memenuhi hatiku setiap kali mengingatmu. Sejak aku masih kecil dan belum memahami dunia, kau sudah berdiri kokoh—bukan sekadar sebagai seorang kakak, tetapi sebagai pelindung, guru, dan sosok panutan yang merawat jiwaku dengan kesabaran tiada tara.
 
-Aku masih ingat bagaimana kau selalu merayakan pencapaian kecilku seolah itu adalah hal paling luar biasa di dunia. Saat aku meragukan kemampuanku sendiri, ketenangan dan keyakinanmu menjadi jembatan bagiku untuk menemukan keberanian. Kau menanggung begitu banyak beban dalam diam agar masa kecilku tetap riang, aman, dan penuh kebahagiaan.
+Untuk Kakakku tersayang. Aku tahu kadang Kakak mudah marah dan bicara dengan nada tinggi saat aku melakukan kesalahan. Namun, di balik ketegasan itu, aku selalu tahu bahwa Kakak adalah orang pertama yang ingin melindungiku. Terima kasih sudah menjadi benteng pertahanan terbaikku, mengajarkanku arti disiplin, dan selalu menyayangi serta mendukungku dengan caramu yang unik.
 
-Kau mengajarkanku bahwa kebaikan sejati adalah kepedulian yang nyata: mengingat makanan favoritku di hari yang berat, menyadari kesedihanku bahkan sebelum air mataku jatuh, dan tak pernah membiarkanku merasa sendirian.
+Kau menunjukkan kepadaku arti ketulusan yang sesungguhnya lewat tindakan nyata: hadir di saat-saat tersulitku, peka terhadap dukaku bahkan sebelum aku mengeluh, dan memastikan aku selalu merasa didekap kehangatan.
 
 Segala nilai baik yang kumiliki hari ini—caraku memperlakukan orang lain, caraku bangkit dari kegagalan, dan ketulusan yang kupelajari—semuanya bersumber dari teladan yang kau jalani. Kau adalah kompas hidupku, inspirasi terbesarku, dan tempat paling nyaman di dunia ini.
 
@@ -31,56 +31,57 @@ Dari adikmu yang selalu bersyukur dan menyayangimu selamanya.`;
       <div className="max-w-3xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-rose-500 mb-2">
-            <Mail className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-rose-600 mb-2 bg-rose-100/70 px-3 py-1 rounded-full border border-rose-200">
+            <Mail className="w-3.5 h-3.5 stroke-[2.2]" />
             <span>Surat dari Lubuk Hati</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight mb-2">
-            Surat Hangat untukmu (The Letter)
+          <h2 className="text-2xl sm:text-4xl font-serif font-extrabold text-stone-950 tracking-tight mb-2">
+            Surat Hangat untukmu
           </h2>
-          <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+          <p className="text-stone-800 font-semibold text-xs sm:text-sm leading-relaxed">
             Untaian kata tulus dari seorang adik yang sangat bersyukur memiliki sosok hebat sepertimu.
           </p>
         </div>
 
-        {/* Clean, Simple, Highly Readable Letter Container */}
-        <div className="bg-white border border-rose-100 rounded-3xl p-6 sm:p-10 shadow-xs relative">
+        {/* Clean, Simple, Highly Readable Letter Container with bold text */}
+        <div className="bg-white border-2 border-rose-200/90 rounded-3xl p-6 sm:p-10 shadow-xs relative">
           {/* Letter Header */}
-          <div className="flex items-center justify-between border-b border-rose-100 pb-5 mb-6">
+          <div className="flex items-center justify-between border-b border-rose-200 pb-5 mb-6">
             <div>
-              <span className="text-[11px] font-mono text-rose-500 uppercase tracking-widest block mb-0.5">
+              <span className="text-xs font-mono font-bold text-rose-600 uppercase tracking-widest block mb-0.5">
                 Pesan Khusus Ulang Tahun
               </span>
-              <h3 className="font-serif italic font-bold text-xl sm:text-2xl text-stone-900">
-                Untuk Kakakku & Ibu Keduaku
+              <h3 className="font-serif italic font-extrabold text-xl sm:text-3xl text-stone-950">
+                Untuk Kakakku Tersayang
               </h3>
             </div>
-            <div className="w-10 h-10 rounded-full bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-500">
-              <Heart className="w-4 h-4 fill-rose-500 text-rose-500" />
+            <div className="w-11 h-11 rounded-full bg-rose-100/80 border border-rose-300 flex items-center justify-center text-rose-600">
+              <Heart className="w-5 h-5 fill-rose-600 text-rose-600 stroke-[2.2]" />
             </div>
           </div>
 
-          {/* Letter Body in clean, readable paragraphs */}
-          <div className="space-y-4 text-stone-700 text-sm sm:text-base leading-relaxed font-sans">
+          {/* Letter Body in clean, readable, bold paragraphs */}
+          <div className="space-y-5 text-stone-800 font-medium text-base sm:text-lg leading-relaxed font-sans">
             <p>
-              Saat menulis surat ini, rasanya kata-kata tak pernah cukup untuk menampung rasa
+              Saat mengetik surat ini, rasanya kata-kata tak pernah cukup untuk menampung rasa
               terima kasih dan syukur yang memenuhi hatiku setiap kali mengingatmu. Sejak aku masih
               kecil dan belum memahami dunia, kau sudah berdiri kokoh—bukan sekadar sebagai seorang
-              kakak, tetapi sebagai pelindung, guru, dan sosok ibu kedua yang merawat jiwaku dengan
+              kakak, tetapi sebagai pelindung, guru, dan sosok panutan yang merawat jiwaku dengan
               kesabaran tiada tara.
             </p>
 
             <p>
-              Aku masih ingat bagaimana kau selalu merayakan pencapaian kecilku seolah itu adalah hal
-              paling luar biasa di dunia. Saat aku meragukan kemampuanku sendiri, ketenangan dan
-              keyakinanmu menjadi jembatan bagiku untuk menemukan keberanian. Kau menanggung begitu
-              banyak beban dalam diam agar masa kecilku tetap riang, aman, dan penuh kebahagiaan.
+              Untuk Kakakku tersayang. Aku tahu kadang Kakak mudah marah dan bicara dengan nada
+              tinggi saat aku melakukan kesalahan. Namun, di balik ketegasan itu, aku selalu tahu bahwa
+              Kakak adalah orang pertama yang ingin melindungiku. Terima kasih sudah menjadi benteng
+              pertahanan terbaikku, mengajarkanku arti disiplin, dan selalu menyayangi serta
+              mendukungku dengan caramu yang unik.
             </p>
 
-            <div className="p-4 bg-rose-50/70 border-l-2 border-rose-300 rounded-r-xl italic font-serif text-stone-800 text-base sm:text-lg">
-              &ldquo;Kau mengajarkanku bahwa kebaikan sejati adalah kepedulian yang nyata: mengingat hal
-              kecil di hari yang berat, menyadari kesedihanku sebelum air mataku jatuh, dan tak
-              pernah membiarkanku merasa sendirian.&rdquo;
+            <div className="p-5 bg-rose-50 border-l-4 border-rose-500 rounded-r-xl italic font-serif font-bold text-stone-950 text-base sm:text-lg leading-relaxed">
+              &ldquo;Kau menunjukkan kepadaku arti ketulusan yang sesungguhnya lewat tindakan nyata:
+              hadir di saat-saat tersulitku, peka terhadap dukaku bahkan sebelum aku mengeluh, dan
+              memastikan aku selalu merasa didekap kehangatan.&rdquo;
             </div>
 
             <p>
@@ -98,10 +99,10 @@ Dari adikmu yang selalu bersyukur dan menyayangimu selamanya.`;
           </div>
 
           {/* Letter Sign-off */}
-          <div className="mt-8 pt-6 border-t border-rose-100 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+          <div className="mt-8 pt-6 border-t border-rose-200 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
             <div>
-              <span className="text-xs text-stone-500 block mb-0.5">Dengan segenap rasa sayang,</span>
-              <p className="font-serif italic font-bold text-lg sm:text-xl text-stone-900">
+              <span className="text-xs font-bold text-stone-600 block mb-0.5">Dengan segenap rasa sayang,</span>
+              <p className="font-serif italic font-extrabold text-xl sm:text-2xl text-stone-950">
                 Adikmu yang Selalu Bersyukur
               </p>
             </div>
@@ -109,16 +110,16 @@ Dari adikmu yang selalu bersyukur dan menyayangimu selamanya.`;
             <button
               type="button"
               onClick={handleCopy}
-              className="px-3.5 py-1.5 rounded-xl bg-stone-50 hover:bg-rose-50 border border-stone-200 text-stone-700 text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-rose-100 border border-stone-300 text-stone-900 text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-600" />
-                  <span className="text-emerald-700 font-semibold">Tersalin ke Clipboard</span>
+                  <Check className="w-4 h-4 text-emerald-600 stroke-[2.5]" />
+                  <span className="text-emerald-800 font-extrabold">Tersalin ke Clipboard</span>
                 </>
               ) : (
                 <>
-                  <Copy className="w-3.5 h-3.5 text-stone-500" />
+                  <Copy className="w-4 h-4 text-stone-700 stroke-[2]" />
                   <span>Salin Teks Surat</span>
                 </>
               )}

@@ -10,12 +10,22 @@
   body {
     font-family: var(--font-sans);
     background-color: #FFF9F9;
-    color: #4A3E3D;
+    color: #1F1918;
+    font-weight: 500;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, .font-serif {
+  h1, h2, h3, h4, .font-serif {
     font-family: var(--font-serif);
+    font-weight: 700;
+    color: #110E0E;
+  }
+
+  p {
+    font-weight: 500;
+    color: #2D2423;
   }
 
   .font-script {
@@ -64,15 +74,6 @@
   50% {
     opacity: 1;
     transform: scale(1.03);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
   }
 }
 

@@ -23,8 +23,8 @@ class SoundPlayer {
   
   private audioElement: HTMLAudioElement | null = null;
   public isCustomAudio = false;
-  public currentTrackName = 'Masa Ini, Nanti, dan Masa Indah Lainnya';
-  public artist = 'Raja Giannuca';
+  public currentTrackName = 'Masa ini, Nanti, dan Masa Indah Lainnya';
+  public artist = 'Nuca';
   public isLoadedFromStorage = false;
 
   // Melodi sintetis akustik Raja Giannuca
@@ -74,7 +74,7 @@ class SoundPlayer {
       // 1. Cek apakah ada file MP3 tersimpan di IndexedDB browser
       const savedBlob = await this.getAudioFromDB();
       if (savedBlob) {
-        this.setupAudioElement(savedBlob, 'Lagu Pilihan Tersimpan');
+        this.setupAudioElement(savedBlob, 'Masa ini, Nanti, dan Masa Indah Lainnya');
         this.isLoadedFromStorage = true;
         this.notify();
         return;
@@ -145,7 +145,7 @@ class SoundPlayer {
     }
     this.isCustomAudio = false;
     this.isLoadedFromStorage = false;
-    this.currentTrackName = 'Masa Ini, Nanti, dan Masa Indah Lainnya';
+    this.currentTrackName = 'Masa ini, Nanti, dan Masa Indah Lainnya';
     this.notify();
   }
 
@@ -155,13 +155,12 @@ class SoundPlayer {
       this.audioElement = null;
     }
     const blob = data instanceof File ? data : data.blob;
-    const name = data instanceof File ? data.name : (trackName || data.name);
     const url = URL.createObjectURL(blob);
     this.audioElement = new Audio(url);
     this.audioElement.loop = true;
     this.audioElement.volume = this.volume;
     this.isCustomAudio = true;
-    this.currentTrackName = name.replace(/\.[^/.]+$/, '');
+    this.currentTrackName = 'Masa ini, Nanti, dan Masa Indah Lainnya';
     this.notify();
   }
 

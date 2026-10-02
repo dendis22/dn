@@ -82,25 +82,25 @@ export const PasscodeLock: React.FC<PasscodeLockProps> = ({ onUnlock }) => {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 bg-[#FFF6F8] relative overflow-hidden">
+    <div className="min-h-screen w-full flex items-center justify-center p-4 bg-[#FFF6F8] relative overflow-hidden font-sans">
       {/* Soft pastel background glow */}
       <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-rose-200/40 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-pink-100/60 blur-3xl pointer-events-none" />
 
       {/* Main card */}
       <div
-        className={`w-full max-w-sm bg-white border border-rose-100 rounded-3xl p-6 sm:p-8 shadow-sm relative z-10 transition-all duration-300 ${
+        className={`w-full max-w-sm bg-white border-2 border-rose-200/80 rounded-3xl p-6 sm:p-8 shadow-sm relative z-10 transition-all duration-300 ${
           error ? 'animate-bounce' : ''
         } ${isSuccess ? 'scale-95 opacity-0' : 'scale-100 opacity-100'}`}
       >
         <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center mx-auto mb-3 text-rose-500">
-            <Lock className="w-5 h-5 stroke-[1.75]" />
+          <div className="w-12 h-12 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center mx-auto mb-3 text-rose-600">
+            <Lock className="w-5 h-5 stroke-[2.2]" />
           </div>
-          <span className="text-xs uppercase tracking-widest text-rose-500 font-medium">
+          <span className="text-xs uppercase tracking-widest text-rose-600 font-bold block">
             Hanya untuk Aak Tersayang
           </span>
-          <h1 className="text-xl sm:text-2xl font-serif font-bold text-stone-800 mt-1">
+          <h1 className="text-xl sm:text-2xl font-serif font-extrabold text-stone-900 mt-1">
             Masukkan Kode Rahasia
           </h1>
         </div>
@@ -119,32 +119,32 @@ export const PasscodeLock: React.FC<PasscodeLockProps> = ({ onUnlock }) => {
               value={digit}
               onChange={(e) => handleInput(idx, e.target.value)}
               onKeyDown={(e) => handleKeyDown(idx, e)}
-              className={`w-12 h-14 text-center text-xl font-serif font-bold rounded-xl border transition-all outline-none ${
+              className={`w-12 h-14 text-center text-2xl font-serif font-extrabold rounded-xl border-2 transition-all outline-none ${
                 error
-                  ? 'border-rose-400 bg-rose-50 text-rose-600 ring-2 ring-rose-200'
+                  ? 'border-rose-500 bg-rose-50 text-rose-700 ring-2 ring-rose-200'
                   : digit
-                  ? 'border-rose-300 bg-white text-stone-800'
-                  : 'border-rose-200/80 bg-rose-50/30 text-stone-700'
-              } focus:border-rose-400 focus:ring-2 focus:ring-rose-100`}
+                  ? 'border-rose-400 bg-white text-stone-900 shadow-xs'
+                  : 'border-rose-200 bg-rose-50/40 text-stone-900'
+              } focus:border-rose-500 focus:ring-2 focus:ring-rose-200`}
             />
           ))}
         </div>
 
         {error && (
-          <div className="flex items-center justify-center gap-1.5 text-xs text-rose-600 mb-4 font-medium">
-            <AlertCircle className="w-3.5 h-3.5" />
+          <div className="flex items-center justify-center gap-1.5 text-xs text-rose-700 mb-4 font-bold">
+            <AlertCircle className="w-4 h-4 stroke-[2.2]" />
             <span>Kode salah, silakan coba lagi.</span>
           </div>
         )}
 
         {/* Numerical On-screen Keypad */}
-        <div className="grid grid-cols-3 gap-2 max-w-[240px] mx-auto">
+        <div className="grid grid-cols-3 gap-2.5 max-w-[240px] mx-auto">
           {['1', '2', '3', '4', '5', '6', '7', '8', '9'].map((num) => (
             <button
               key={num}
               type="button"
               onClick={() => handleKeypadPress(num)}
-              className="h-10 rounded-xl bg-stone-50 hover:bg-rose-50 active:bg-rose-100 text-stone-700 text-base font-medium transition-colors flex items-center justify-center cursor-pointer"
+              className="h-11 rounded-xl bg-stone-100 hover:bg-rose-100 active:bg-rose-200 text-stone-900 text-lg font-bold transition-colors flex items-center justify-center cursor-pointer border border-stone-200"
             >
               {num}
             </button>
@@ -152,14 +152,14 @@ export const PasscodeLock: React.FC<PasscodeLockProps> = ({ onUnlock }) => {
           <button
             type="button"
             onClick={handleClear}
-            className="h-10 rounded-xl bg-stone-50 hover:bg-rose-50 text-stone-500 text-xs font-medium transition-colors flex items-center justify-center cursor-pointer"
+            className="h-11 rounded-xl bg-stone-100 hover:bg-rose-100 text-stone-700 text-xs font-bold transition-colors flex items-center justify-center cursor-pointer border border-stone-200"
           >
             Hapus
           </button>
           <button
             type="button"
             onClick={() => handleKeypadPress('0')}
-            className="h-10 rounded-xl bg-stone-50 hover:bg-rose-50 active:bg-rose-100 text-stone-700 text-base font-medium transition-colors flex items-center justify-center cursor-pointer"
+            className="h-11 rounded-xl bg-stone-100 hover:bg-rose-100 active:bg-rose-200 text-stone-900 text-lg font-bold transition-colors flex items-center justify-center cursor-pointer border border-stone-200"
           >
             0
           </button>
@@ -167,7 +167,7 @@ export const PasscodeLock: React.FC<PasscodeLockProps> = ({ onUnlock }) => {
             type="button"
             onClick={handleBackspace}
             aria-label="Hapus satu digit"
-            className="h-10 rounded-xl bg-stone-50 hover:bg-rose-50 text-stone-500 text-sm font-medium transition-colors flex items-center justify-center cursor-pointer"
+            className="h-11 rounded-xl bg-stone-100 hover:bg-rose-100 text-stone-800 text-base font-bold transition-colors flex items-center justify-center cursor-pointer border border-stone-200"
           >
             ⌫
           </button>
