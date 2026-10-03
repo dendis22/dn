@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Heart, Flame, Wind, RotateCcw } from 'lucide-react';
+import { Sparkles, Heart, Flame, Wind, RotateCcw, Download } from 'lucide-react';
 import { soundPlayer } from '../audio/soundPlayer';
 
 interface CakeSectionProps {
@@ -23,6 +23,39 @@ export const CakeSection: React.FC<CakeSectionProps> = ({ onTriggerFireworks }) 
       setIsLit(true);
       soundPlayer.playFireworkBoom();
       onTriggerFireworks();
+    }
+  };
+
+  const handleDownloadHtml = async () => {
+    try {
+      const res = await fetch('/dist/index.html');
+      let htmlText = '';
+      if (res.ok) {
+        htmlText = await res.text();
+      } else {
+        htmlText = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      }
+      const blob = new Blob([htmlText], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch {
+      const blob = new Blob(['<!DOCTYPE html>\n' + document.documentElement.outerHTML], {
+        type: 'text/html;charset=utf-8'
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     }
   };
 
@@ -132,10 +165,20 @@ export const CakeSection: React.FC<CakeSectionProps> = ({ onTriggerFireworks }) 
           <p className="font-serif italic font-bold text-stone-950 text-base mb-1">
             &ldquo;Selamat Ulang Tahun untuk Kakakku Tersayang dan Panutan Hidupku.&rdquo;
           </p>
-          <div className="flex items-center justify-center gap-1.5 text-rose-600 font-bold">
+          <div className="flex items-center justify-center gap-1.5 text-rose-600 font-bold mb-4">
             <Heart className="w-3.5 h-3.5 fill-rose-600 stroke-[2.2]" />
             <span>Disusun dengan penuh cinta oleh adikmu</span>
           </div>
+
+          <button
+            type="button"
+            onClick={handleDownloadHtml}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-rose-300 text-stone-700 hover:text-rose-700 text-xs font-bold transition-all cursor-pointer shadow-2xs hover:shadow-xs active:scale-95"
+            title="Unduh seluruh situs web ini sebagai satu file index.html mandiri"
+          >
+            <Download className="w-3.5 h-3.5 text-rose-600" />
+            <span>Unduh File index.html</span>
+          </button>
         </div>
       </div>
     </section>
