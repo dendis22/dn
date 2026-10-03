@@ -18,7 +18,7 @@ Di hari ulang tahunmu ini, aku ingin berjanji: sebagaimana kau selalu setia menj
 
 Selamat ulang tahun, sosok panutan terhebatku. Aku menyayangimu lebih dari yang bisa terucap oleh kata-kata.
 
-Dari adikmu yang selalu bersyukur dan menyayangimu selamanya.`;
+Dari Adikmu Tersayang.`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(letterContent);
@@ -103,7 +103,7 @@ Dari adikmu yang selalu bersyukur dan menyayangimu selamanya.`;
             <div>
               <span className="text-xs font-bold text-stone-600 block mb-0.5">Dengan segenap rasa sayang,</span>
               <p className="font-serif italic font-extrabold text-xl sm:text-2xl text-stone-950">
-                Adikmu yang Selalu Bersyukur
+                Adikmu Tersayang
               </p>
             </div>
 
@@ -115,7 +115,7 @@ Dari adikmu yang selalu bersyukur dan menyayangimu selamanya.`;
               {copied ? (
                 <>
                   <Check className="w-4 h-4 text-emerald-600 stroke-[2.5]" />
-                  <span className="text-emerald-800 font-extrabold">Tersalin ke Clipboard</span>
+                  <span className="text-emerald-800 font-extrabold">Berhasil Disalin!</span>
                 </>
               ) : (
                 <>

@@ -36,9 +36,9 @@ export const SurfaceHero: React.FC = () => {
           <span>Persembahan Spesial Ulang Tahun</span>
         </div>
 
-        {/* Title: Happy Birthday My Older Sister */}
+        {/* Title: Selamat Ulang Tahun Kakakku Tersayang */}
         <h1 className="text-3xl sm:text-5xl lg:text-5xl font-serif font-extrabold text-stone-950 leading-tight tracking-tight mb-6">
-          Happy Birthday My Older Sister
+          Selamat Ulang Tahun Kakakku Tersayang
         </h1>
 
         {/* Heartfelt Loving Message in Indonesian */}
@@ -72,7 +72,7 @@ export const SurfaceHero: React.FC = () => {
             <button
               type="button"
               onClick={togglePlay}
-              aria-label={isPlaying ? 'Jeda lagu (Pause)' : 'Putar lagu (Play)'}
+              aria-label={isPlaying ? 'Jeda lagu' : 'Putar lagu'}
               className={`px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-xs shrink-0 ${
                 isPlaying
                   ? 'bg-rose-600 hover:bg-rose-700 text-white'
@@ -82,12 +82,12 @@ export const SurfaceHero: React.FC = () => {
               {isPlaying ? (
                 <>
                   <Pause className="w-4 h-4 fill-current stroke-[2]" />
-                  <span>Pause</span>
+                  <span>Jeda</span>
                 </>
               ) : (
                 <>
                   <Play className="w-4 h-4 fill-current stroke-[2]" />
-                  <span>Play</span>
+                  <span>Putar</span>
                 </>
               )}
             </button>
@@ -100,7 +100,7 @@ export const SurfaceHero: React.FC = () => {
                 type="button"
                 onClick={() => soundPlayer.setVolume(volume > 0 ? 0 : 0.6)}
                 className="text-stone-600 hover:text-stone-950 cursor-pointer"
-                aria-label="Toggle mute"
+                aria-label="Bisukan atau bunyikan musik"
               >
                 {volume === 0 ? (
                   <VolumeX className="w-4 h-4 stroke-[2]" />

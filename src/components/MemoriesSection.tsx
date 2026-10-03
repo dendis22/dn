@@ -67,7 +67,7 @@ export const MemoriesSection: React.FC = () => {
             <span>Babak Perjalanan Kita</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-serif font-extrabold text-stone-950 tracking-tight mb-2">
-            Kenangan Kita (Our Memories)
+            Untaian Kenangan Indah
           </h2>
           <p className="text-stone-800 font-semibold text-xs sm:text-sm leading-relaxed">
             Kumpulan momen berharga, pengorbanan tulus, dan pelajaran hidup yang membangun

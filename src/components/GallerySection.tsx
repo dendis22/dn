@@ -135,7 +135,7 @@ export const GallerySection: React.FC = () => {
             <span>Koleksi Foto Kenangan</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-serif font-extrabold text-stone-950 tracking-tight mb-2">
-            A few of my Older Sister shots of you
+            Potret Istimewa Kakakku Tersayang
           </h2>
           <p className="text-stone-800 font-semibold text-xs sm:text-sm leading-relaxed">
             Delapan potret istimewa yang merekam keanggunan, keteguhan, dan kehangatan kasihmu.

@@ -13,7 +13,7 @@ const navItems = [
   { id: 'gallery', label: 'Galeri' },
   { id: 'letter', label: 'Surat' },
   { id: 'wishes', label: 'Doa & Harapan' },
-  { id: 'cake', label: 'Kue Ulang Tahun' }
+  { id: 'cake', label: 'Tiup Lilin' }
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({ onLock, onTriggerFireworks }) => {
@@ -117,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onLock, onTriggerFireworks }) =>
             <button
               type="button"
               onClick={toggleMusic}
-              aria-label={isPlaying ? 'Pause musik' : 'Play musik'}
+              aria-label={isPlaying ? 'Jeda musik' : 'Putar musik'}
               className={`px-3 py-1.5 rounded-full text-xs font-bold border-2 flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap ${
                 isPlaying
                   ? 'bg-rose-600 text-white border-rose-600 shadow-xs'
@@ -127,12 +127,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onLock, onTriggerFireworks }) =>
               {isPlaying ? (
                 <>
                   <Pause className="w-3.5 h-3.5 fill-current stroke-[2]" />
-                  <span className="hidden sm:inline">Pause</span>
+                  <span className="hidden sm:inline">Jeda</span>
                 </>
               ) : (
                 <>
                   <Play className="w-3.5 h-3.5 fill-current stroke-[2]" />
-                  <span className="hidden sm:inline">Play</span>
+                  <span className="hidden sm:inline">Putar</span>
                 </>
               )}
             </button>

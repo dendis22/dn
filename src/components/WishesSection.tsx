@@ -64,7 +64,7 @@ export const WishesSection: React.FC = () => {
             <span>Doa Terbaik untuk Usia Baru</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-serif font-extrabold text-stone-950 tracking-tight mb-2">
-            Enam Harapan & Doa Tulus (Wishes)
+            Enam Untaian Doa & Harapan Tulus
           </h2>
           <p className="text-stone-800 font-semibold text-xs sm:text-sm leading-relaxed">
             Untaian doa terbaik untuk sosok tercinta. Klik salah satu kartu doa untuk menyampaikan

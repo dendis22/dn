@@ -37,7 +37,7 @@ export const CakeSection: React.FC<CakeSectionProps> = ({ onTriggerFireworks }) 
           </div>
 
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-stone-950 tracking-tight mb-4">
-            Happy Birthday, My Older Sister & Role Model!
+            Selamat Ulang Tahun, Kakakku & Panutan Hidupku!
           </h2>
 
           <p className="text-stone-800 font-medium text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
@@ -130,7 +130,7 @@ export const CakeSection: React.FC<CakeSectionProps> = ({ onTriggerFireworks }) 
         {/* Simple Footer with clear font */}
         <div className="pt-8 border-t border-rose-200 max-w-sm mx-auto text-stone-700 text-xs">
           <p className="font-serif italic font-bold text-stone-950 text-base mb-1">
-            &ldquo;Happy Birthday My Older Sister and My Role Model.&rdquo;
+            &ldquo;Selamat Ulang Tahun untuk Kakakku Tersayang dan Panutan Hidupku.&rdquo;
           </p>
           <div className="flex items-center justify-center gap-1.5 text-rose-600 font-bold">
             <Heart className="w-3.5 h-3.5 fill-rose-600 stroke-[2.2]" />
