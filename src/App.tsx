@@ -19,19 +19,6 @@ export default function App() {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [fireworksActive, setFireworksActive] = useState(false);
 
-  useEffect(() => {
-    // Pastikan baris alamat URL browser menampilkan /index.html
-    if (typeof window !== 'undefined' && (window.location.pathname === '/' || window.location.pathname === '')) {
-      const hash = window.location.hash || '';
-      const search = window.location.search || '';
-      try {
-        window.history.replaceState(null, '', '/index.html' + search + hash);
-      } catch {
-        // Abaikan jika lingkungan iframe membatasi
-      }
-    }
-  }, []);
-
   const handleUnlock = () => {
     setIsUnlocked(true);
     // Automatically start the gentle soothing ambient acoustic melody upon unlock

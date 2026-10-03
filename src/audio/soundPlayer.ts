@@ -71,6 +71,19 @@ class SoundPlayer {
 
   private async initStoredAudio() {
     try {
+      // 0. Cek preloaded audio string (misal dari HTML bundle mandiri)
+      if (typeof window !== 'undefined' && (window as any).__PRELOADED_CUSTOM_AUDIO__) {
+        const audioData = (window as any).__PRELOADED_CUSTOM_AUDIO__;
+        if (audioData.dataUrl) {
+          const res = await fetch(audioData.dataUrl);
+          const blob = await res.blob();
+          this.setupAudioElement({ blob, name: audioData.name || 'Lagu Pilihan Pribadi' }, audioData.name);
+          this.isLoadedFromStorage = true;
+          this.notify();
+          return;
+        }
+      }
+
       // 1. Cek apakah ada file MP3 tersimpan di IndexedDB browser
       const savedBlob = await this.getAudioFromDB();
       if (savedBlob) {
@@ -155,13 +168,27 @@ class SoundPlayer {
       this.audioElement = null;
     }
     const blob = data instanceof File ? data : data.blob;
+    const name = trackName || (data instanceof File ? data.name : data.name);
     const url = URL.createObjectURL(blob);
     this.audioElement = new Audio(url);
     this.audioElement.loop = true;
     this.audioElement.volume = this.volume;
     this.isCustomAudio = true;
-    this.currentTrackName = 'Masa ini, Nanti, dan Masa Indah Lainnya';
+    if (name) {
+      this.currentTrackName = name.replace(/\.[^/.]+$/, '');
+    }
     this.notify();
+  }
+
+  public async getAudioBase64(): Promise<string | null> {
+    const saved = await this.getAudioFromDB();
+    if (!saved) return null;
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = () => resolve(null);
+      reader.readAsDataURL(saved.blob);
+    });
   }
 
   public async loadCustomAudio(file: File) {

@@ -83,7 +83,7 @@ export const GallerySection: React.FC = () => {
     return favorites;
   });
 
-  // Permanently load custom photos stored in IndexedDB
+  // Permanently load custom photos stored in IndexedDB if any
   useEffect(() => {
     async function loadSavedPhotos() {
       const stored = await getAllCustomPhotos();

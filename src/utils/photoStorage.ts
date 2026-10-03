@@ -25,13 +25,15 @@ function openDB(): Promise<IDBDatabase> {
 }
 
 export async function getAllCustomPhotos(): Promise<Record<number, StoredPhotoData>> {
+  const preloaded: Record<number, StoredPhotoData> =
+    typeof window !== 'undefined' ? (window as any).__PRELOADED_CUSTOM_PHOTOS__ || {} : {};
   try {
     const db = await openDB();
     return new Promise((resolve) => {
       const tx = db.transaction(STORE_NAME, 'readonly');
       const store = tx.objectStore(STORE_NAME);
       const req = store.openCursor();
-      const results: Record<number, StoredPhotoData> = {};
+      const results: Record<number, StoredPhotoData> = { ...preloaded };
 
       req.onsuccess = (e) => {
         const cursor = (e.target as IDBRequest).result as IDBCursorWithValue | null;
@@ -42,10 +44,10 @@ export async function getAllCustomPhotos(): Promise<Record<number, StoredPhotoDa
           resolve(results);
         }
       };
-      req.onerror = () => resolve({});
+      req.onerror = () => resolve(results);
     });
   } catch {
-    return {};
+    return preloaded;
   }
 }
 
