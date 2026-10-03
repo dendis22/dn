@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Heart, Flame, Wind, RotateCcw, Download } from 'lucide-react';
+import { Sparkles, Heart, Flame, Wind, RotateCcw, Download, Share2, Check } from 'lucide-react';
 import { soundPlayer } from '../audio/soundPlayer';
 
 interface CakeSectionProps {
@@ -10,6 +10,7 @@ export const CakeSection: React.FC<CakeSectionProps> = ({ onTriggerFireworks }) 
   const [isLit, setIsLit] = useState(true);
   const [wishMade, setWishMade] = useState(false);
   const [blowCount, setBlowCount] = useState(0);
+  const [copiedLink, setCopiedLink] = useState(false);
 
   const handleCandleClick = () => {
     if (isLit) {
@@ -24,6 +25,14 @@ export const CakeSection: React.FC<CakeSectionProps> = ({ onTriggerFireworks }) 
       soundPlayer.playFireworkBoom();
       onTriggerFireworks();
     }
+  };
+
+  const handleCopyLink = () => {
+    const origin = window.location.origin;
+    const url = `${origin}/index.html`;
+    navigator.clipboard.writeText(url);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2000);
   };
 
   const handleDownloadHtml = async () => {
@@ -175,15 +184,36 @@ export const CakeSection: React.FC<CakeSectionProps> = ({ onTriggerFireworks }) 
             <span>Disusun dengan penuh cinta oleh adikmu</span>
           </div>
 
-          <button
-            type="button"
-            onClick={handleDownloadHtml}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-rose-300 text-stone-700 hover:text-rose-700 text-xs font-bold transition-all cursor-pointer shadow-2xs hover:shadow-xs active:scale-95"
-            title="Unduh seluruh situs web ini sebagai satu file index.html mandiri"
-          >
-            <Download className="w-3.5 h-3.5 text-rose-600" />
-            <span>Unduh File index.html</span>
-          </button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5">
+            <button
+              type="button"
+              onClick={handleCopyLink}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-rose-300 text-stone-700 hover:text-rose-700 text-xs font-bold transition-all cursor-pointer shadow-2xs hover:shadow-xs active:scale-95 whitespace-nowrap"
+              title="Salin tautan web berakhiran /index.html"
+            >
+              {copiedLink ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[2.5]" />
+                  <span className="text-emerald-700 font-extrabold">Link .html Tersalin!</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="w-3.5 h-3.5 text-rose-600" />
+                  <span>Salin Link Web (.html)</span>
+                </>
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={handleDownloadHtml}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-rose-50 border border-rose-300 text-stone-700 hover:text-rose-700 text-xs font-bold transition-all cursor-pointer shadow-2xs hover:shadow-xs active:scale-95 whitespace-nowrap"
+              title="Unduh seluruh situs web ini sebagai satu file index.html mandiri"
+            >
+              <Download className="w-3.5 h-3.5 text-rose-600" />
+              <span>Unduh File index.html</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
