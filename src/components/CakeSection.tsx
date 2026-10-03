@@ -28,12 +28,17 @@ export const CakeSection: React.FC<CakeSectionProps> = ({ onTriggerFireworks }) 
 
   const handleDownloadHtml = async () => {
     try {
-      const res = await fetch('/dist/index.html');
+      const res = await fetch('/standalone_website.html');
       let htmlText = '';
       if (res.ok) {
         htmlText = await res.text();
       } else {
-        htmlText = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        const res2 = await fetch('/dist/index.html');
+        if (res2.ok) {
+          htmlText = await res2.text();
+        } else {
+          htmlText = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        }
       }
       const blob = new Blob([htmlText], { type: 'text/html;charset=utf-8' });
       const url = URL.createObjectURL(blob);
