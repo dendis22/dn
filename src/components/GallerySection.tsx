@@ -6,7 +6,7 @@ import { getAllCustomPhotos } from '../utils/photoStorage';
 const initialGalleryPhotos: GalleryPhoto[] = [
   {
     id: 1,
-    src: '/src/assets/images/role_model_portrait_1790842563776.jpg',
+    src: 'https://ibb.co.com/YBtR6pRJ',
     title: 'Keanggunan & Keteduhan',
     caption: 'Seperti pancaran cahaya lembut kehadiranmu selalu meneduhkan hati',
     dateOrTag: 'Keanggunan Sejati',
@@ -14,15 +14,15 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 2,
-    src: '/src/assets/images/cherished_moments_1790842576406.jpg',
+    src: 'https://ibb.co.com/MDF1mbj9',
     title: 'Tawa Bersama yang Hangat',
-    caption: 'menyimpan tawa terbaik dalam 1 bingkai kenangan',
+    caption: 'menyimpan senyuman terbaik dalam 1 bingkai kenangan',
     dateOrTag: 'Momen Bahagia',
     aspect: 'aspect-[4/3]'
   },
   {
     id: 3,
-    src: '/src/assets/images/sister_guidance_1790842588588.jpg',
+    src: 'https://ibb.co.com/fzsKyBBm',
     title: 'Bimbingan Penuh Sabar',
     caption: 'melihat senyummu adalah pengingat terbaik tentang bagaimana ketulusan dan kesabaran bisa menenangkan hati',
     dateOrTag: 'Teladan & Nasihat',
@@ -30,7 +30,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 4,
-    src: '/src/assets/images/sister_nature_walk_1790842603393.jpg',
+    src: 'https://ibb.co.com/5hVR8V1D',
     title: 'Ketenangan Jiwa',
     caption: 'kadang yang kita butuhkan hanyalah tempat yang nyaman untuk menjernihkan pikiran',
     dateOrTag: 'Ketenangan Hati',
@@ -38,7 +38,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 5,
-    src: '/src/assets/images/sister_achievement_1790842616881.jpg',
+    src: 'https://ibb.co.com/HLKz3b40',
     title: 'Tekad & Ketangguhan',
     caption: 'Setiap keringat dan lelahmu hari ini adalah fondasi bagi masa depan gemilang yang sedang kamu bangun',
     dateOrTag: 'Semangat Berjuang',
@@ -46,7 +46,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 6,
-    src: '/src/assets/images/sister_candid_smile_1790842632605.jpg',
+    src: 'https://ibb.co.com/WNBpM1WD',
     title: 'Senyuman yang Menyejukkan',
     caption: 'Senyuman hangat yang selalu menjadi tempat berteduh paling aman dari segala lelah',
     dateOrTag: 'Tulus dari Hati',
@@ -54,7 +54,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 7,
-    src: '/src/assets/images/sister_sunset_view_1790842644610.jpg',
+    src: 'https://ibb.co.com/Rp3p02QY',
     title: 'Refleksi Senja',
     caption: 'Seperti senja yang menenangkan, kasih sayangmu selalu menghangatkan hatiku tanpa pernah meminta balasan',
     dateOrTag: 'Syukur Mendalam',
@@ -62,7 +62,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 8,
-    src: '/src/assets/images/sister_celebration_1790842695091.jpg',
+    src: 'https://ibb.co.com/xSYwfVC8',
     title: 'Hari yang Berbunga',
     caption: 'Dedikasi nyata dan integritas tinggi dari seorang panutan yang selalu menjadi kebanggaan keluarga.',
     dateOrTag: 'Perayaan Cinta',
