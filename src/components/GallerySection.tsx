@@ -6,7 +6,7 @@ import { getAllCustomPhotos } from '../utils/photoStorage';
 const initialGalleryPhotos: GalleryPhoto[] = [
   {
     id: 1,
-    src: 'https://ibb.co.com/YBtR6pRJ',
+    src: 'https://i.ibb.co.com/LdCkMnkB/role-model-portrait-1790842563776.jpg',
     title: 'Keanggunan & Keteduhan',
     caption: 'Seperti pancaran cahaya lembut kehadiranmu selalu meneduhkan hati',
     dateOrTag: 'Keanggunan Sejati',
@@ -14,7 +14,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 2,
-    src: 'https://ibb.co.com/MDF1mbj9',
+    src: 'https://i.ibb.co.com/pvYKSgsn/cherished-moments-1790842576406.jpg',
     title: 'Tawa Bersama yang Hangat',
     caption: 'menyimpan senyuman terbaik dalam 1 bingkai kenangan',
     dateOrTag: 'Momen Bahagia',
@@ -22,7 +22,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 3,
-    src: 'https://ibb.co.com/fzsKyBBm',
+    src: 'https://i.ibb.co.com/MxmjtWWq/sister-guidance-1790842588588.jpg',
     title: 'Bimbingan Penuh Sabar',
     caption: 'melihat senyummu adalah pengingat terbaik tentang bagaimana ketulusan dan kesabaran bisa menenangkan hati',
     dateOrTag: 'Teladan & Nasihat',
@@ -30,7 +30,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 4,
-    src: 'https://ibb.co.com/5hVR8V1D',
+    src: 'https://i.ibb.co.com/qYwrswDG/sister-nature-walk-1790842603393.jpg',
     title: 'Ketenangan Jiwa',
     caption: 'kadang yang kita butuhkan hanyalah tempat yang nyaman untuk menjernihkan pikiran',
     dateOrTag: 'Ketenangan Hati',
@@ -38,7 +38,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 5,
-    src: 'https://ibb.co.com/HLKz3b40',
+    src: 'https://i.ibb.co.com/NgFjbJCX/sister-achievement-1790842616881.jpg',
     title: 'Tekad & Ketangguhan',
     caption: 'Setiap keringat dan lelahmu hari ini adalah fondasi bagi masa depan gemilang yang sedang kamu bangun',
     dateOrTag: 'Semangat Berjuang',
@@ -46,7 +46,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 6,
-    src: 'https://ibb.co.com/WNBpM1WD',
+    src: 'https://i.ibb.co.com/9my31j9w/sister-candid-smile-1790842632605.jpg',
     title: 'Senyuman yang Menyejukkan',
     caption: 'Senyuman hangat yang selalu menjadi tempat berteduh paling aman dari segala lelah',
     dateOrTag: 'Tulus dari Hati',
@@ -54,7 +54,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 7,
-    src: 'https://ibb.co.com/Rp3p02QY',
+    src: 'https://i.ibb.co.com/3ypyN1S4/sister-sunset-view-1790842644610.jpg',
     title: 'Refleksi Senja',
     caption: 'Seperti senja yang menenangkan, kasih sayangmu selalu menghangatkan hatiku tanpa pernah meminta balasan',
     dateOrTag: 'Syukur Mendalam',
@@ -62,7 +62,7 @@ const initialGalleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 8,
-    src: 'https://ibb.co.com/xSYwfVC8',
+    src: 'https://i.ibb.co.com/fY9Znm1G/sister-celebration-1790842695091.jpg',
     title: 'Hari yang Berbunga',
     caption: 'Dedikasi nyata dan integritas tinggi dari seorang panutan yang selalu menjadi kebanggaan keluarga.',
     dateOrTag: 'Perayaan Cinta',
