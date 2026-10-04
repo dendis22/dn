@@ -53,7 +53,7 @@ export const CakeSection: React.FC<CakeSectionProps> = ({ onTriggerFireworks }) 
           >
             {/* Cake image */}
             <img
-              src="/src/assets/images/birthday_cake_candle_1790919789881.jpg"
+              src="https://i.ibb.co.com/jvG7zvZm/birthday-cake-candle-1790919789881.jpg"
               alt="Kue ulang tahun dengan satu lilin menyala"
               className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
             />
