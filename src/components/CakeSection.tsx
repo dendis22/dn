@@ -31,47 +31,70 @@ export const CakeSection: React.FC<CakeSectionProps> = ({ onTriggerFireworks }) 
       <div className="max-w-3xl mx-auto">
         {/* Final Birthday Message in Indonesian with high readability */}
         <div className="mb-10">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-rose-600 mb-2 bg-rose-100/70 px-3 py-1 rounded-full border border-rose-200">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-rose-600 mb-2 bg-rose-100/70 px-3.5 py-1.5 rounded-full border border-rose-200">
             <Sparkles className="w-3.5 h-3.5 stroke-[2.2]" />
             <span>Puncak Perayaan Ulang Tahun</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-serif font-extrabold text-stone-950 tracking-tight mb-3">
-            Tiup Lilin & Rayakan Harapanmu
+          <h2 className="text-3xl sm:text-5xl font-serif font-extrabold text-stone-950 tracking-tight mb-3">
+            Happy Birthday, Kakakku Tersayang!
           </h2>
           <p className="text-stone-800 font-semibold text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
             Di hari bertambahnya usiamu, pejamkan matamu sejenak, panjatkan doa terbaikmu,
-            lalu tiup lilin ini sebagai simbol langkah baru yang penuh berkah.
+            lalu klik lilin di bawah ini untuk meniupnya dan merayakan dengan kembang api.
           </p>
         </div>
 
         {/* Clean Realistic Single-Candle Birthday Cake Card */}
-        <div className="max-w-md mx-auto bg-white border-2 border-rose-200/90 rounded-3xl p-6 sm:p-8 shadow-xs mb-8">
-          <div className="relative aspect-4/3 rounded-2xl overflow-hidden mb-6 bg-rose-50 border border-rose-100 flex items-center justify-center">
+        <div className="max-w-md mx-auto bg-white border-2 border-rose-200/90 rounded-3xl p-5 sm:p-7 shadow-xs mb-8">
+          <div
+            onClick={handleCandleClick}
+            title={isLit ? "Klik lilin untuk meniupnya!" : "Klik lilin untuk menyalakan kembali!"}
+            className="relative aspect-square w-full max-w-[340px] sm:max-w-[360px] mx-auto rounded-2xl overflow-hidden mb-6 bg-rose-50 border border-rose-100 flex items-center justify-center shadow-xs cursor-pointer group active:scale-[0.99] transition-transform"
+          >
             {/* Cake image */}
             <img
               src="/src/assets/images/birthday_cake_candle_1790919789881.jpg"
-              alt="Kue ulang tahun dengan lilin menyala"
-              className="w-full h-full object-cover"
+              alt="Kue ulang tahun dengan satu lilin menyala"
+              className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
             />
 
-            {/* Glowing animated flame overlay when lit */}
+            {/* Glowing animated flame overlay positioned EXACTLY at the candle tip (50.2%, 16.4%) */}
             {isLit && (
-              <div className="absolute top-[28%] left-[49.5%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                <div className="w-8 h-8 rounded-full bg-amber-400/40 blur-md animate-ping opacity-75" />
-                <div className="w-5 h-7 rounded-full bg-linear-to-t from-amber-500 via-yellow-300 to-white blur-[0.5px] animate-pulse" />
+              <div
+                className="absolute pointer-events-none -translate-x-1/2 flex flex-col items-center justify-end z-20"
+                style={{ left: '50.2%', top: '16.4%' }}
+              >
+                <div className="relative -translate-y-full flex flex-col items-center">
+                  {/* Outer atmospheric warm glow */}
+                  <div className="absolute bottom-0 w-14 h-20 rounded-full bg-amber-400/30 blur-lg animate-pulse pointer-events-none" />
+                  {/* Secondary lively pulse */}
+                  <div className="absolute bottom-0.5 w-8 h-12 rounded-full bg-amber-400/40 blur-md animate-ping opacity-60" />
+                  {/* Glowing teardrop flame shape resting on the candle wick */}
+                  <div className="relative w-4 h-8 bg-linear-to-t from-amber-600 via-amber-300 to-white rounded-[50%_50%_40%_40%/75%_75%_25%_25%] shadow-[0_0_14px_rgba(251,191,36,0.95)] animate-pulse" />
+                  {/* Inner blue-white wick root */}
+                  <div className="absolute bottom-0 w-2 h-2.5 bg-sky-200/80 rounded-full blur-[0.5px]" />
+                </div>
               </div>
             )}
 
-            {/* Soft smoke effect when extinguished */}
+            {/* Soft wispy smoke rising right from the candle tip when extinguished */}
             {!isLit && (
-              <div className="absolute top-[26%] left-[49.5%] -translate-x-1/2 -translate-y-1/2 pointer-events-none animate-pulse">
-                <div className="w-3 h-6 bg-stone-400/40 blur-sm rounded-full -translate-y-2" />
-                <div className="w-4 h-8 bg-stone-300/30 blur-md rounded-full -translate-y-4" />
+              <div
+                className="absolute pointer-events-none -translate-x-1/2 flex flex-col items-center z-20"
+                style={{ left: '50.2%', top: '16.4%' }}
+              >
+                <div className="relative -translate-y-full flex flex-col items-center">
+                  {/* Dim glowing ember at the wick */}
+                  <div className="w-1.5 h-1.5 bg-rose-500/90 rounded-full shadow-[0_0_4px_#f43f5e] animate-pulse mb-0.5" />
+                  {/* Rising smoke curls */}
+                  <div className="w-3 h-7 bg-stone-400/40 blur-xs rounded-full animate-pulse -translate-y-1" />
+                  <div className="w-4 h-9 bg-stone-300/30 blur-sm rounded-full -translate-y-3" />
+                </div>
               </div>
             )}
 
             {/* Status indicator on image */}
-            <div className="absolute bottom-3 left-3 bg-white/95 px-3 py-1 rounded-full text-[11px] font-bold text-stone-900 shadow-xs border border-rose-200">
+            <div className="absolute bottom-3 left-3 bg-white/95 px-3 py-1 rounded-full text-[11px] font-bold text-stone-900 shadow-xs border border-rose-200 z-10">
               {isLit ? '🔥 Lilin Menyala' : '✨ Lilin Berhasil Ditiup'}
             </div>
           </div>
